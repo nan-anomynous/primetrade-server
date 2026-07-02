@@ -13,7 +13,17 @@ const errorHandler = require("./middleware/errorMiddleware");
 
 app.use(express.json());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "http://primetrade-client-7r7l-coral.vercel.app/"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
+
 app.use(helmet());
 
 app.use(morgan("dev"));
